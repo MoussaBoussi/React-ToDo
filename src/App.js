@@ -9,15 +9,16 @@ const mapStateToProps = state => ({
 });
 
 class App extends Component {
-  state = {
-    todos: [
-      "Learn Basics of React & Redux",
-      "Create TODO app"
-    ]
-  }
+  constructor(props){
+    super(props)
 
-  deleteTodo = index => {
-    console.log(index)
+    this.state = {
+      todos: [
+        "Learn Basics of React & Redux",
+        "Create TODO app"
+      ]
+    }
+    
   }
 
   render() {
@@ -26,7 +27,7 @@ class App extends Component {
         <header className="App-header">
           <h1>TODO App</h1>
         </header>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+        <Todos todos={this.state.todos} />
       </div>
     );
   }
