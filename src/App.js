@@ -15,6 +15,7 @@ class App extends Component {
 
     // state cannot be accessed unless the function is binded
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.addTodo = this.addTodo.bind(this);
     this.state = {
       todos: [
         "Learn Basics of React & Redux",
@@ -22,6 +23,13 @@ class App extends Component {
       ]
     }
 
+  }
+
+  addTodo(todo) {
+    let todos = [ ...this.state.todos, todo ]
+    this.setState({
+      todos: todos
+    })
   }
 
   deleteTodo(index) {
@@ -39,7 +47,7 @@ class App extends Component {
           <h1>TODO App</h1>
         </header>
         <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
-        <AddTodo />
+        <AddTodo addTodo={this.addTodo} />
       </div>
     );
   };
