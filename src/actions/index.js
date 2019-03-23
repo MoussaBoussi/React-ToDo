@@ -1,6 +1,6 @@
-import { INCREMENT } from "./types";
+import { POST, DELETE } from "./types";
 
-export const increment = payload => ({
-  type: INCREMENT,
+export const POST = payload => ({
+  type: POST,
   payload
 });
