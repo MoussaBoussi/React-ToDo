@@ -1,34 +1,50 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import "./App.css";
-import { increment } from "./actions";
+// import { increment } from "./actions";
 
-const mapStateToProps = state => ({
-  count: state.count
-});
+// const mapStateToProps = state => ({
+//   count: state.count
+// });
 
 class App extends Component {
-  testAction = payload => {
-    this.props.dispatch(increment(payload));
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      items: []
+    }
+    this.addItem = this.addItem.bind(this)
+  }
+
+  addItem(e) {
+    if (this.inputElement.value !== "") {
+      // first thing i tried: 
+      // this.state.items = [ this.inputElement.value, ...this.state.items ]
+      this.setState((prevState) => {
+        return {
+          items: [ this.inputElement.value , prevState.items ]
+        }
+      })
+      this.inputElement.value = ""
+    }
+  }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Counter</h1>
+          <h1>React TODO</h1>
         </header>
-
-        <pre>Counter: {this.props.count}</pre>
-
-        <button onClick={() => this.testAction(1)}>+</button>
-
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <form onSubmit={this.addItem}>
+          <input ref={(a) => this.inputElement = a} placeholder="Write a TODO here"></input>
+          <button>+</button>
+        </form>
+        <ul>
+          <li>test</li>
+        </ul>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default App;
