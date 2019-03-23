@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-import "./App.css";
-// import { increment } from "./actions";
 import Todos from "./todos"
+import "./App.css";
 
-// const mapStateToProps = state => ({
-//   count: state.count
-// });
 
 class App extends Component {
   state = {
@@ -34,11 +29,17 @@ class App extends Component {
       console.log(this.state.items)
     }
     // prevents page from refreshing
+    console.log("test")
     e.preventDefault()
   }
 
   deleteTodo = (id) => {
-    console.log(id)
+    const todos = this.state.todos.filter(todo => {
+      return todo.id !== id
+    })
+    this.setState({
+      todos: todos
+    })
   }
 
   render() {
@@ -51,7 +52,7 @@ class App extends Component {
           <input ref={(a) => this.inputElement = a} placeholder="Write a TODO here"></input>
           <button>+</button>
         </form>
-        <Todos list={this.state.todos}/>
+        <Todos list={this.state.todos} deleteTodo={this.deleteTodo}/>
       </div>
     );
   }

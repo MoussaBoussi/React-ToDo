@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todos = ({list}) => {
+const Todos = ({list, deleteTodo}) => {
     // if the todo list has a length then output each todo, otherwise output There are no Todos
     // list.map will take each individual item in the list and return a div with the text inside
     // React requires a key in order to keep track of each item in the array.
@@ -8,7 +8,8 @@ const Todos = ({list}) => {
         list.map(todo => {
             return (
                 <div key={todo.id}>
-                    <p>{todo.text}</p>
+                    <span>{todo.text}</span>
+                    <button onClick={() => {deleteTodo(todo.id)}}>DELETE</button>
                 </div>
             )
         })
@@ -17,7 +18,7 @@ const Todos = ({list}) => {
     )
 
     return(
-        <div class="todos">
+        <div className="todos">
             { todoList }
         </div>
     )
