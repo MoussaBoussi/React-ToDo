@@ -17,8 +17,10 @@ class App extends Component {
           <header className="App-header">
             <h1>TODO App</h1>
           </header>
-          <Todos />
           <AddTodo />
+          <div class="todos">
+            <Todos />
+          </div>
         </div>
       );
   };

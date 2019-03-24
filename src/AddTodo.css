@@ -1,0 +1,22 @@
+input {
+    border: none;
+    padding:0;
+    margin: 8px 0;
+    width: 45vw;
+    height: 20px;
+    outline:none;
+    border-bottom: 2px solid #282c34;
+}
+
+.add {
+    padding: 0;
+    width: 5vw;
+    height: 30px;
+    background-color: #282c34;
+    color: white;
+    margin-left: 8px;
+}
+
+.add:hover {
+    background-color: lightgreen;
+}

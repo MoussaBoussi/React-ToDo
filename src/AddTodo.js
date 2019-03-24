@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { post_todo } from "./actions";
 
+import "./AddTodo.css"
+
 const mapStateToProps = state => ({
     todos: state
 });
@@ -35,9 +37,8 @@ class AddTodo extends Component {
     render(){
         return(
             <form onSubmit={this.onSubmit}>
-                <label>Add New Todo:</label>
-                <input type="text" onChange={this.onChange} value={this.state.content} />
-                <button>ADD</button>
+                <input placeholder="Enter a new TODO" type="text" onChange={this.onChange} value={this.state.content} />
+                <button class="add">+</button>
             </form>
         )
     }

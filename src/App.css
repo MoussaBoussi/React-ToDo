@@ -14,3 +14,9 @@
 .App-link {
   color: #61dafb;
 }
+
+.todos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

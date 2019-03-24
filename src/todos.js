@@ -2,6 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { delete_todo } from "./actions"
+import "./todos.css";
 
 const mapStateToProps = state => ({
     todos: state
@@ -16,9 +17,9 @@ class Todos extends React.Component {
         return this.props.todos.length ? (
             this.props.todos.map((todo, index) => {
                 return(
-                    <div key={ index }>
+                    <div key={ index } class="todo_container">
                         <p>{ todo }</p>
-                        <button onClick={() => {this.deleteTodo(index)}}>Delete</button>
+                        <button class="delete" onClick={() => {this.deleteTodo(index)}}>Delete</button>
                     </div>
                 )
             })
