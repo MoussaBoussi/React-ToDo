@@ -1,4 +1,4 @@
-import { GET, POST, DELETE } from "./actions/types";
+import { post_todo, delete_todo } from "./actions";
 
 export default (
   state = {
@@ -8,11 +8,16 @@ export default (
   action
 ) => {
   switch (action.type) {
-    case POST:
+    case post_todo:
       return {
         ...state,
-        count: state.count + action.payload
+        todos: [ state.todos, action.payload ]
       };
+    case delete_todo:
+    return {
+      ...state,
+      todos: [ state.todos, action.payload ]
+    };
     default:
       return state;
   }
