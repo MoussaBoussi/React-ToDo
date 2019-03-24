@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { post_todo } from "./actions";
+
+const mapStateToProps = state => ({
+    todos: state
+});
 
 class AddTodo extends Component {
     constructor(props) {
@@ -19,7 +25,8 @@ class AddTodo extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        this.props.addTodo(this.state.content)
+        let payload = this.state.content
+        this.props.dispatch(post_todo(payload));
         this.setState({
             content: ""
         })
@@ -36,4 +43,4 @@ class AddTodo extends Component {
     }
 }
 
-export default AddTodo;
+export default connect(mapStateToProps)(AddTodo);

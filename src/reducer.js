@@ -1,23 +1,17 @@
-import { post_todo, delete_todo } from "./actions";
+import { POST_TODO, DELETE_TODO } from "./actions/types";
 
 export default (
-  state = {
-    todos: [],
-    todo: ""
-  },
+  state = [],
   action
 ) => {
   switch (action.type) {
-    case post_todo:
-      return {
+    case POST_TODO:
+      return [
         ...state,
-        todos: [ state.todos, action.payload ]
-      };
-    case delete_todo:
-    return {
-      ...state,
-      todos: [ state.todos, action.payload ]
-    };
+        action.payload
+      ];
+    case DELETE_TODO:
+      return state.filter((item, i) => { return i !== action.index } );
     default:
       return state;
   }

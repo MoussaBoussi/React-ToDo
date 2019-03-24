@@ -1,19 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+
+import { connect } from "react-redux";
+import { delete_todo } from "./actions"
+
+const mapStateToProps = state => ({
+    todos: state
+});
 
 class Todos extends React.Component {
-    constructor(props) {
-        super(props);
+    deleteTodo(index) {
+        this.props.dispatch(delete_todo(index));
     }
 
     render() {
-        const { todos, deleteTodo } = this.props
-
-        return todos.length ? (
-            todos.map((todo, index) => {
+        return this.props.todos.length ? (
+            this.props.todos.map((todo, index) => {
                 return(
                     <div key={ index }>
                         <p>{ todo }</p>
-                        <button onClick={() => {deleteTodo(index)}}>Delete</button>
+                        <button onClick={() => {this.deleteTodo(index)}}>Delete</button>
                     </div>
                 )
             })
@@ -23,4 +28,4 @@ class Todos extends React.Component {
     }
 }
 
-export default Todos;
+export default connect(mapStateToProps)(Todos);
